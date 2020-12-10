@@ -44,7 +44,7 @@ build_script:
   - set CMAKE_ARGS=-G "Visual Studio 15 2017 Win64" -H. -Bbuild -DETHASHCUDA=ON -DAPICORE=ON -DHUNTER_JOBS_NUMBER=%NUMBER_OF_PROCESSORS%
   - if "%CUDA_VER%" NEQ "10.0" set CMAKE_ARGS=%CMAKE_ARGS% -T v140
   - cmake %CMAKE_ARGS%
-  - cmake --build build --config Release --target Release
+  - cmake --build build --config Release --target package
   - ps: |
       . build/ethminer/buildinfo.ps1
       mv build/ethminer.zip build/$env:project_name-$env:project_version-cuda$env:CUDA_VER-$env:system_name-$env:system_processor.zip
