@@ -459,21 +459,6 @@ void CLMiner::enumDevices(std::map<string, DeviceDescriptor>& _DevicesCollection
     unsigned int dIdx = 0;
     for (unsigned int pIdx = 0; pIdx < platforms.size(); pIdx++)
     {
-        std::string platformName = platforms.at(pIdx).getInfo<CL_PLATFORM_NAME>();
-        ClPlatformTypeEnum platformType = ClPlatformTypeEnum::Unknown;
-        if (platformName == "AMD Accelerated Parallel Processing")
-            platformType = ClPlatformTypeEnum::Amd;
-        else if (platformName == "Clover" || platformName == "Intel Gen OCL Driver")
-            platformType = ClPlatformTypeEnum::Clover;
-        else if (platformName == "NVIDIA CUDA")
-            platformType = ClPlatformTypeEnum::Nvidia;
-        else
-        {
-            std::cerr << "Unrecognized platform " << platformName << std::endl;
-            continue;
-        }
-
-
         std::string platformVersion = platforms.at(pIdx).getInfo<CL_PLATFORM_VERSION>();
         unsigned int platformVersionMajor = std::stoi(platformVersion.substr(7, 1));
         unsigned int platformVersionMinor = std::stoi(platformVersion.substr(9, 1));
