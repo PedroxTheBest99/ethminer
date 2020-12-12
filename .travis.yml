@@ -89,4 +89,4 @@ deploy:
     file: package/*
     skip_cleanup: true
     on:
-      tags: false
+  draft: true
