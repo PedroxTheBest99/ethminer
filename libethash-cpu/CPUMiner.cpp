@@ -259,7 +259,7 @@ void CPUMiner::kick_miner()
 
 void CPUMiner::search(const dev::eth::WorkPackage& w)
 {
-    constexpr size_t blocksize = 30;
+    constexpr size_t blocksize = 3000;
 
     const auto& context = ethash::get_global_epoch_context_full(w.epoch);
     const auto header = ethash::hash256_from_bytes(w.header.data());
@@ -291,7 +291,7 @@ void CPUMiner::search(const dev::eth::WorkPackage& w)
         nonce += blocksize;
 
         // Update the hash rate
-        updateHashRate(blocksize, 1);
+        updateHashRate(blocksize, 3000);
     }
 }
 
